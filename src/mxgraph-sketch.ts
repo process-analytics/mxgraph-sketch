@@ -19,16 +19,13 @@ export function configureMxGraphSketchSupport(): void {
 
 }
 
-// TODO mxgraph 4.2.0, no more isFF
 function initMxShapePrototype(isFF: boolean): void {
-    // this change is needed for adding the custom attributes that permits identification of the BPMN elements
+    // adapted from  https://github.com/jgraph/mxgraph2/blob/mxgraph-4_2_0/javascript/src/js/shape/mxShape.js#L625
     mxShape.prototype.createSvgCanvas = function () {
         const canvas = newSvgCanvas(this.node, this);
-        canvas.strokeTolerance = this.pointerEvents ? this.svgStrokeTolerance : 0;
+
+        canvas.strokeTolerance = (this.pointerEvents) ? this.svgStrokeTolerance : 0;
         canvas.pointerEventsValue = this.svgPointerEvents;
-        // TODO existed in mxgraph-type-definitions@1.0.2, no more in mxgraph-type-definitions@1.0.3
-        // this is probably because mxSvgCanvas2D definition matches mxgraph@4.1.1 and we are using  mxgraph@4.1.0
-        ((canvas as unknown) as mxgraph.mxSvgCanvas2D).blockImagePointerEvents = isFF;
         const off = this.getSvgScreenOffset();
 
         if (off != 0) {
@@ -37,17 +34,11 @@ function initMxShapePrototype(isFF: boolean): void {
             this.node.removeAttribute('transform');
         }
 
-        // add attributes to be able to identify elements in DOM
-        if (this.state && this.state.cell) {
-            this.node.setAttribute('class', 'class-state-cell-style-' + this.state.cell.style.replace(';', '-'));
-            this.node.setAttribute('data-cell-id', this.state.cell.id);
-        }
-        //
         canvas.minStrokeWidth = this.minSvgStrokeWidth;
 
         if (!this.antiAlias) {
             // Rounds all numbers in the SVG output to integers
-            canvas.format = function (value: string) {
+            canvas.format = function (value) {
                 return Math.round(parseFloat(value));
             };
         }
