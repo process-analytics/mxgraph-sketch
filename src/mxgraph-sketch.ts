@@ -54,7 +54,7 @@ function configureMxShapePrototype(): void {
 
 function isCustomizationRequiredForSketchStyle(shape: mxShape): boolean {
   if (shape.outline) return false;
-  return mxUtils.getValue(shape.style, 'sketch', 'false') == 'true';
+  return mxUtils.getValue(shape.style, 'sketch', false) == true;
 }
 
 function newSvgCanvas(node: HTMLElement, shape: mxShape): mxSvgCanvas2D {
