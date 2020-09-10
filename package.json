@@ -6,5 +6,8 @@
     "dependencies": {
         "mxgraph": "^4.2.0",
         "roughjs": "^4.3.1"
+    },
+    "scripts": {
+        "build": "tsc"
     }
 }
