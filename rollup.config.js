@@ -48,7 +48,6 @@ if (devMode || demoMode) {
   let copyPlugin;
   if (devLiveReloadMode) {
     copyPlugin = copyWatch({
-      watch: ['src/static/**', 'src/index.html'],
       targets: copyTargets,
     });
   } else {
@@ -79,7 +78,7 @@ if (demoMode) {
 }
 
 export default {
-  input: 'src/index.ts',
+  input: 'src/mxgraph-sketch.ts',
   output: [
     {
       file: pkg.module,
