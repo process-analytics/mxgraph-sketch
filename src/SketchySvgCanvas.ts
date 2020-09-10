@@ -367,7 +367,7 @@ export class SketchySvgCanvas extends mxSvgCanvas2D {
     } else if (this.nextShape != null) {
       for (const key in style) {
         // here we know this is a valid operation
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         this.nextShape.options[key] = style[key];
       }
