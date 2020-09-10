@@ -1,0 +1,8 @@
+{
+    "devDependencies": {
+        "mxgraph-type-definitions": "^1.0.4"
+    },
+    "dependencies": {
+        "mxgraph": "^4.2.0"
+    }
+}
