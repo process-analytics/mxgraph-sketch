@@ -1,4 +1,14 @@
 {
+    "name": "mxgraph-sketch",
+    "version": "0.0.1",
+    "description": "A TypeScript library to add sketch style to mxGraph with roughjs",
+    "repository": "https://github.com/process-analytics/mxgraph-sketch",
+    "license": "Apache-2.0",
+    "module": "dist/index.es.js",
+    "files": [
+        "dist"
+    ],
+    "types": "dist/index.d.ts",
     "scripts": {
         "all": "run-s clean lint lint-check build",
         "clean": "rimraf build dist",

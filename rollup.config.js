@@ -78,7 +78,7 @@ if (demoMode) {
 }
 
 export default {
-  input: 'src/mxgraph-sketch.ts',
+  input: 'src/index.ts',
   output: [
     {
       file: pkg.module,

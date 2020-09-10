@@ -25,7 +25,6 @@ export class SketchySvgCanvas extends mxSvgCanvas2D {
     super(node);
     this.roughJS = new RoughJsAdaptor(this);
 
-
     // TODO is this needed? from draw.io
     // Avoids "spikes" in the output
     // this.canvas.setLineJoin('round');
@@ -61,7 +60,10 @@ export class SketchySvgCanvas extends mxSvgCanvas2D {
     const defs = this.roughJS.getDefaultOptions();
 
     if (stroke) {
-      style.stroke = this.state.strokeColor === 'none' ? 'transparent' : this.state.strokeColor;
+      style.stroke =
+        this.state.strokeColor === 'none'
+          ? 'transparent'
+          : this.state.strokeColor;
     } else {
       delete style.stroke;
     }
@@ -69,23 +71,64 @@ export class SketchySvgCanvas extends mxSvgCanvas2D {
     let gradient = null;
     if (fill) {
       style.fill = this.state.fillColor === 'none' ? '' : this.state.fillColor;
-      gradient = this.state.gradientColor === 'none' ? null : this.state.gradientColor;
+      gradient =
+        this.state.gradientColor === 'none' ? null : this.state.gradientColor;
     }
 
     // Applies cell style
-    style['bowing'] = mxUtils.getValue(this.shape.style, 'bowing', defs['bowing']);
-    style['hachureAngle'] = mxUtils.getValue(this.shape.style, 'hachureAngle', defs['hachureAngle']);
-    style['curveFitting'] = mxUtils.getValue(this.shape.style, 'curveFitting', defs['curveFitting']);
-    style['roughness'] = mxUtils.getValue(this.shape.style, 'roughness', defs['roughness']);
-    style['simplification'] = mxUtils.getValue(this.shape.style, 'simplification', defs['simplification']);
-    style['disableMultiStroke'] = mxUtils.getValue(this.shape.style, 'disableMultiStroke', defs['disableMultiStroke']);
-    style['disableMultiStrokeFill'] = mxUtils.getValue(this.shape.style, 'disableMultiStrokeFill', defs['disableMultiStrokeFill']);
+    style['bowing'] = mxUtils.getValue(
+      this.shape.style,
+      'bowing',
+      defs['bowing'],
+    );
+    style['hachureAngle'] = mxUtils.getValue(
+      this.shape.style,
+      'hachureAngle',
+      defs['hachureAngle'],
+    );
+    style['curveFitting'] = mxUtils.getValue(
+      this.shape.style,
+      'curveFitting',
+      defs['curveFitting'],
+    );
+    style['roughness'] = mxUtils.getValue(
+      this.shape.style,
+      'roughness',
+      defs['roughness'],
+    );
+    style['simplification'] = mxUtils.getValue(
+      this.shape.style,
+      'simplification',
+      defs['simplification'],
+    );
+    style['disableMultiStroke'] = mxUtils.getValue(
+      this.shape.style,
+      'disableMultiStroke',
+      defs['disableMultiStroke'],
+    );
+    style['disableMultiStrokeFill'] = mxUtils.getValue(
+      this.shape.style,
+      'disableMultiStrokeFill',
+      defs['disableMultiStrokeFill'],
+    );
 
     const hachureGap = mxUtils.getValue(this.shape.style, 'hachureGap', -1);
     style['hachureGap'] = hachureGap == 'auto' ? -1 : hachureGap;
-    style['dashGap'] = mxUtils.getValue(this.shape.style, 'dashGap', hachureGap);
-    style['dashOffset'] = mxUtils.getValue(this.shape.style, 'dashOffset', hachureGap);
-    style['zigzagOffset'] = mxUtils.getValue(this.shape.style, 'zigzagOffset', hachureGap);
+    style['dashGap'] = mxUtils.getValue(
+      this.shape.style,
+      'dashGap',
+      hachureGap,
+    );
+    style['dashOffset'] = mxUtils.getValue(
+      this.shape.style,
+      'dashOffset',
+      hachureGap,
+    );
+    style['zigzagOffset'] = mxUtils.getValue(
+      this.shape.style,
+      'zigzagOffset',
+      hachureGap,
+    );
 
     const fillWeight = mxUtils.getValue(this.shape.style, 'fillWeight', -1);
     style['fillWeight'] = fillWeight == 'auto' ? -1 : fillWeight;
@@ -94,7 +137,8 @@ export class SketchySvgCanvas extends mxSvgCanvas2D {
 
     if (fillStyle == 'auto') {
       // defaultPageBackgroundColor is draw.io specific
-      fillStyle = style.fill != null && gradient != null ? 'solid' : defs['fillStyle'];
+      fillStyle =
+        style.fill != null && gradient != null ? 'solid' : defs['fillStyle'];
     }
 
     style['fillStyle'] = fillStyle;
@@ -141,8 +185,12 @@ export class SketchySvgCanvas extends mxSvgCanvas2D {
           // from the mxAbstractCanvas2D.prototype.addOp implementation
           if (this.passThrough) {
             // manage translation and scaling
-            this.path.push(String(this.format(String((this.lastX + s.dx) * s.scale))));
-            this.path.push(String(this.format(String((this.lastY + s.dy) * s.scale))));
+            this.path.push(
+              String(this.format(String((this.lastX + s.dx) * s.scale))),
+            );
+            this.path.push(
+              String(this.format(String((this.lastY + s.dy) * s.scale))),
+            );
           } else {
             this.path.push(String(this.format(String(this.lastX))));
             this.path.push(String(this.format(String(this.lastY))));
@@ -205,7 +253,14 @@ export class SketchySvgCanvas extends mxSvgCanvas2D {
     }
   }
 
-  curveTo(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): void {
+  curveTo(
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+    x3: number,
+    y3: number,
+  ): void {
     if (this.passThrough) {
       super.curveTo(x1, y1, x2, y2, x3, y3);
     } else {
@@ -244,7 +299,13 @@ export class SketchySvgCanvas extends mxSvgCanvas2D {
     } else {
       // console.error('#### custom rect - manual');
       this.path = [];
-      this.nextShape = this.roughJS.generator.rectangle(x, y, w, h, this.getStyle(true, true));
+      this.nextShape = this.roughJS.generator.rectangle(
+        x,
+        y,
+        w,
+        h,
+        this.getStyle(true, true),
+      );
     }
   }
 
@@ -255,14 +316,27 @@ export class SketchySvgCanvas extends mxSvgCanvas2D {
     } else {
       // console.error('#### custom ellipse - manual');
       this.path = [];
-      this.nextShape = this.roughJS.generator.ellipse(x + w / 2, y + h / 2, w, h, this.getStyle(true, true));
+      this.nextShape = this.roughJS.generator.ellipse(
+        x + w / 2,
+        y + h / 2,
+        w,
+        h,
+        this.getStyle(true, true),
+      );
     }
   }
 
   // Redefine the implementation because
   // the original one applies scaling on dx/dy and scaling must be applied after roughjs processing
   // we need that the rounded parts goes through roughjs
-  roundrect(x: number, y: number, w: number, h: number, dx: number, dy: number): void {
+  roundrect(
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+    dx: number,
+    dy: number,
+  ): void {
     if (this.passThrough) {
       // console.error('#### custom RoundRect - passThrough');
       super.roundrect(x, y, w, h, dx, dy);

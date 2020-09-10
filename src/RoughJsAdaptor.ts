@@ -14,7 +14,13 @@
  * limitations under the License.
  */
 
-import { Config, Drawable, OpSet, Options, ResolvedOptions } from 'roughjs/bin/core';
+import {
+  Config,
+  Drawable,
+  OpSet,
+  Options,
+  ResolvedOptions,
+} from 'roughjs/bin/core';
 import { SketchySvgCanvas } from './SketchySvgCanvas';
 import { RoughGenerator } from 'roughjs/bin/generator';
 
