@@ -5,6 +5,7 @@
     "repository": "https://github.com/process-analytics/mxgraph-sketch",
     "license": "Apache-2.0",
     "module": "dist/index.es.js",
+    "main": "dist/index.umd.js",
     "files": [
         "dist"
     ],

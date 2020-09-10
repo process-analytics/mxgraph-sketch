@@ -80,10 +80,16 @@ if (demoMode) {
 export default {
   input: 'src/index.ts',
   output: [
+    // {
+    //   file: pkg.module,
+    //   format: 'es',
+    //   sourcemap: sourceMap,
+    // },
     {
-      file: pkg.module,
-      format: 'es',
-      sourcemap: sourceMap,
+      file: pkg.main,
+      name: 'mxSketch',
+      format: 'umd',
+      sourcemap: false,
     },
   ],
   external: [...Object.keys(pkg.peerDependencies || {})],
