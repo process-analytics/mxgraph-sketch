@@ -35,7 +35,7 @@ export class SketchySvgCanvas extends mxSvgCanvas2D {
   // TODO rename toRoughJsStyle
   // TODO rename arguments?
   private getStyle(stroke: boolean, fill: boolean): Options {
-    // TODO seed to ensure that there is no randomness for a given cell: same rendering after translation, scale or accross reload
+    // TODO seed to ensure that there is no randomness for a given cell: same rendering after translation, scale or across reload
     //  if we want to introduce this feature, let's defined a style entry to make this configurable 'roughjsSeedActivated'
     // See https://roughjs.com/posts/release-4.0/
 

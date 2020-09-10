@@ -52,7 +52,8 @@ export class RoughJsAdaptor {
     }
   }
 
-  // draw.io
+  // from draw.io
+  // TODO add link to github url for the draw.io original code
   private _fillSketch(drawing: OpSet, o: ResolvedOptions): void {
     const strokeColor = this.c.state.strokeColor;
     const strokeWidth = this.c.state.strokeWidth;
