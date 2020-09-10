@@ -43,7 +43,11 @@
 				graph.setEnabled(false);
 				
 				// Changes the default vertex style in-place
-				var style = graph.getStylesheet().getDefaultVertexStyle();
+                var style = graph.getStylesheet().getDefaultVertexStyle();
+                style['sketch'] = 1;
+                style['fillStyle'] = 'zigzag';
+                style[mxConstants.STYLE_FILLCOLOR] = 'teal';
+                style[mxConstants.STYLE_FILL_OPACITY] = '40';
 				style[mxConstants.STYLE_SHAPE] = mxConstants.SHAPE_ELLIPSE;
 				style[mxConstants.STYLE_PERIMETER] = mxPerimeter.EllipsePerimeter;
 				style[mxConstants.STYLE_GRADIENTCOLOR] = 'white';
