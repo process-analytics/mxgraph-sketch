@@ -3,7 +3,7 @@
     "declaration": true,
     "declarationDir": "./dist",
     "outDir": "./dist",
-    "module": "UMD",
+    "module": "es6",
     "target": "es6",
     "noImplicitAny": true,
     "strictBindCallApply": true,
