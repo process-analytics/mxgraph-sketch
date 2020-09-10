@@ -3,22 +3,18 @@ name: Build
 on:
   push:
     branches:
-      - master
+      - main
     paths-ignore:
       - '.github/workflows/fill-gh-draft-release.yml'
-      - '.github/workflows/generate-documentation.yml'
-      - '.github/workflows/upload-demo-archive.yml'
       - '.gitignore'
       - 'docs/**'
       - '*.md'
       - LICENSE
   pull_request:
     branches:
-      - master
+      - main
     paths-ignore:
       - '.github/workflows/fill-gh-draft-release.yml'
-      - '.github/workflows/generate-documentation.yml'
-      - '.github/workflows/upload-demo-archive.yml'
       - '.gitignore'
       - 'docs/**'
       - '*.md'
