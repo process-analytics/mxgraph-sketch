@@ -44,7 +44,7 @@
 				
 				// Changes the default vertex style in-place
                 var style = graph.getStylesheet().getDefaultVertexStyle();
-                style['sketch'] = true;
+                style['sketch'] = document.getElementById('sketch').checked;
                 style['fillStyle'] = 'zigzags';
                 style[mxConstants.STYLE_FILLCOLOR] = 'red';
                 style[mxConstants.STYLE_FILL_OPACITY] = '40';
@@ -116,7 +116,7 @@
 						}
 					}
 				), document.body.firstChild);
-												
+                                                
 				// Adds a button to execute the layout
 				document.body.insertBefore(mxUtils.button('Organic Layout',
 					function(evt)
@@ -156,14 +156,14 @@
 				var h = 90;
 				try
 				{
-					var v1 = graph.insertVertex(parent, null, 'A', 0, 0, w, h, "fillColor=royalblue;roughness=5"); 
-					var v2 = graph.insertVertex(parent, null, 'B', 0, 0, w, h, "fillStyle=dots;roughness=10;fillColor=black");
-					var v3 = graph.insertVertex(parent, null, 'C', 0, 0, w, h, `fillStyle=cross-hatch;${mxConstants.STYLE_FILLCOLOR}=Chartreuse`);
-					var v4 = graph.insertVertex(parent, null, 'D', 0, 0, w, h, `fillStyle=dashed;${mxConstants.STYLE_FILLCOLOR}=teal`);
-					var v5 = graph.insertVertex(parent, null, 'E', 0, 0, w, h);
-					var v6 = graph.insertVertex(parent, null, 'F', 0, 0, w, h);
-					var v7 = graph.insertVertex(parent, null, 'G', 0, 0, w, h);
-					var v8 = graph.insertVertex(parent, null, 'H', 0, 0, w, h);
+					var v1 = graph.insertVertex(parent, null, 'A', 0, 0, w, h, "fillColor=SADDLEBROWN"); 
+					var v2 = graph.insertVertex(parent, null, 'B', 0, 0, w, h, "fillStyle=dots;fillColor=OLIVE");
+					var v3 = graph.insertVertex(parent, null, 'C', 0, 0, w, h, `fillStyle=cross-hatch;${mxConstants.STYLE_FILLCOLOR}=DARKKHAKI`);
+					var v4 = graph.insertVertex(parent, null, 'D', 0, 0, w, h, `fillStyle=dashed;${mxConstants.STYLE_FILLCOLOR}=DARKSEAGREEN`);
+					var v5 = graph.insertVertex(parent, null, 'E', 0, 0, w, h, "fillColor=TEAL");
+					var v6 = graph.insertVertex(parent, null, 'F', 0, 0, w, h, "fillStyle=cross-hatch;fillColor=LIGHTSTEELBLUE;roughness=8");
+					var v7 = graph.insertVertex(parent, null, 'G', 0, 0, w, h, "fillColor=ROSYBROWN");
+					var v8 = graph.insertVertex(parent, null, 'H', 0, 0, w, h, "fillStyle=dashed;fillColor=CHOCOLATE");
 					var e1 = graph.insertEdge(parent, null, 'ab', v1, v2);
 					var e2 = graph.insertEdge(parent, null, 'ac', v1, v3);
 					var e3 = graph.insertEdge(parent, null, 'cd', v3, v4);
@@ -182,9 +182,21 @@
 				{
 					// Updates the display
 					graph.getModel().endUpdate();
-				}
+                }
+                
+                var sketchBtn = document.getElementById('sketch');
+                sketchBtn.onclick = function() {
+                    var sketchActivated = sketchBtn.checked;
+                    style['sketch'] = sketchActivated;
+        
+                    // var styleEdge = graph.getStylesheet().getDefaultEdgeStyle();
+                    // styleEdge['sketch'] = sketchActivated;
+
+                    graph.refresh();
+                }
 			}
-		};
+        };
+        
 	</script>
 </head>
 
@@ -198,5 +210,6 @@
 	</div>
 	<br>
 	<input type="checkbox" id="animate" checked="checked"/> Transitions
+    <input type="checkbox" id="sketch"/> Activate sketch mode
 </body>
 </html>
