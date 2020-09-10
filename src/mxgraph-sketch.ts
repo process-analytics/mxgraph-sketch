@@ -16,10 +16,15 @@
 import {SketchySvgCanvas} from "./SketchySvgCanvas";
 
 export function configureMxGraphSketchSupport(): void {
+    configureMxShapePrototype();
 
+    // TODO understand why we would need this (comes from draw.io)
+    overrideMxShapePaint(false);
+    overrideMxRectangleShapePaintBackground(false);
+    overrideMxRectangleShapePaintForeground(false);
 }
 
-function initMxShapePrototype(isFF: boolean): void {
+function configureMxShapePrototype(): void {
     // adapted from  https://github.com/jgraph/mxgraph2/blob/mxgraph-4_2_0/javascript/src/js/shape/mxShape.js#L625
     mxShape.prototype.createSvgCanvas = function () {
         const canvas = newSvgCanvas(this.node, this);
@@ -45,11 +50,6 @@ function initMxShapePrototype(isFF: boolean): void {
 
         return canvas;
     };
-
-    // TODO understand why we would need this (comes from draw.io)
-    overrideMxShapePaint(false);
-    overrideMxRectangleShapePaintBackground(false);
-    overrideMxRectangleShapePaintForeground(false);
 }
 
 function isCustomizationRequiredForSketchStyle(shape: mxShape): boolean {
