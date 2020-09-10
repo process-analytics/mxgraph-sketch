@@ -1,0 +1,50 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '.github/workflows/fill-gh-draft-release.yml'
+      - '.gitignore'
+      - 'docs/**'
+      - '*.md'
+      - LICENSE
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '.github/workflows/fill-gh-draft-release.yml'
+      - '.gitignore'
+      - 'docs/**'
+      - '*.md'
+      - LICENSE
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os.name }}
+    strategy:
+      # we want to run the full build on all os: don't cancel running jobs even if one fails
+      fail-fast: false
+      matrix:
+        # syntax inspired from https://github.community/t5/GitHub-Actions/Using-a-matrix-defined-input-for-a-custom-action/m-p/32032/highlight/true#M988
+        os:
+          - { name: ubuntu-latest}
+          - { name: macos-latest }
+          - { name: windows-latest }
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Verify node, npm version
+        run: |
+          node --version
+          npm --version
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint check
+        run: npm run lint-check
+      - name: Build Application
+        run: npm run build
