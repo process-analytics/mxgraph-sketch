@@ -1,6 +1,7 @@
 {
     "devDependencies": {
-        "mxgraph-type-definitions": "^1.0.4"
+        "mxgraph-type-definitions": "^1.0.4",
+        "typescript": "^4.0.2"
     },
     "dependencies": {
         "mxgraph": "^4.2.0"
