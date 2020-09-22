@@ -23,7 +23,7 @@
     </p>
 </p>
 
-This library, used with the [MxGraph](https://github.com/jgraph/mxgraph) library, update the render with a Sketch style.
+Used with the [MxGraph](https://github.com/jgraph/mxgraph) library, this library updates the render with a Sketch style.
 
 ## 🎨 Features
 
