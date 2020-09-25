@@ -8,7 +8,7 @@ All members of our community are expected to follow our [Code of Conduct](https:
 
 There are many ways to contribute:
 
-- help people with the questions they ask on the [Github Issues](https://github.com/process-analytics/mxgraph-sketch-js/issues)
+- help people with the questions they ask on the [Github Issues](https://github.com/process-analytics/mxgraph-sketch/issues)
 - submitting bug reports and feature requests in the [Github Issues](https://github.com/process-analytics/mxgraph-sketch-js/issues/new)
 - writing code which can be incorporated into `mxgraph-sketch` itself
 - improving the documentation
