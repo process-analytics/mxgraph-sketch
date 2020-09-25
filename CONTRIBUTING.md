@@ -50,7 +50,6 @@ git checkout -b 25-annotations_to_tasks
 ```
 
 ### IDE configuration
-To know how configurate your development environment, see [IDE configuration](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/development/ide-configuration.md)
 
 The repository contains configuration for [Eclipse Theia](https://theia-ide.org/) and [gitpod.io](https://www.gitpod.io/).
 
