@@ -46,4 +46,4 @@ You can find more detail in our [Contributing guide](CONTRIBUTING.md). Participa
 `mxgraph-sketch` is released under the [Apache 2.0](LICENSE) license. \
 Copyright &copy; 2020, Bonitasoft S.A.
 
-Thanks to [Roughjs](https://github.com/rough-stuff/rough) for the sketch style.
+Thanks to [Roughjs](https://github.com/rough-stuff/rough) (MIT License) for the sketch style.
