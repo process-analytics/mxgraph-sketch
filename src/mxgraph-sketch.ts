@@ -76,9 +76,7 @@ function overrideMxShapePaint(activate: boolean): void {
     let events = true;
 
     if (this.style != null) {
-      events =
-        mxUtils.getValue(this.style, mxConstants.STYLE_POINTER_EVENTS, '1') ==
-        '1';
+      events = mxUtils.getValue(this.style, mxConstants.STYLE_POINTER_EVENTS, '1') == '1';
       fillStyle = mxUtils.getValue(this.style, 'fillStyle', 'auto');
 
       if (this.state != null && fillStyle == 'auto') {
@@ -95,9 +93,7 @@ function overrideMxShapePaint(activate: boolean): void {
       events &&
       c instanceof SketchySvgCanvas &&
       !this.outline &&
-      (this.fill == null ||
-        this.fill == mxConstants.NONE ||
-        fillStyle != 'solid')
+      (this.fill == null || this.fill == mxConstants.NONE || fillStyle != 'solid')
     ) {
       // if (events && c.handJiggle != null && c.handJiggle.constructor == RoughCanvas &&
       //   !this.outline && (this.fill == null || this.fill == mxConstants.NONE ||
@@ -128,8 +124,7 @@ function overrideMxRectangleShapePaintBackground(activate: boolean): void {
   // from Draw.io
   // TODO add link to draw.io code
   // Overrides to avoid call to rect
-  const mxRectangleShapePaintBackground0 =
-    mxRectangleShape.prototype.paintBackground;
+  const mxRectangleShapePaintBackground0 = mxRectangleShape.prototype.paintBackground;
   mxRectangleShape.prototype.paintBackground = function (c, x, y, w, h): void {
     if (!(c instanceof SketchySvgCanvas)) {
       mxRectangleShapePaintBackground0.apply(this, [c, x, y, w, h]);
@@ -137,9 +132,7 @@ function overrideMxRectangleShapePaintBackground(activate: boolean): void {
       let events = true;
 
       if (this.style != null) {
-        events =
-          mxUtils.getValue(this.style, mxConstants.STYLE_POINTER_EVENTS, '1') ==
-          '1';
+        events = mxUtils.getValue(this.style, mxConstants.STYLE_POINTER_EVENTS, '1') == '1';
       }
 
       if (
@@ -156,31 +149,15 @@ function overrideMxRectangleShapePaintBackground(activate: boolean): void {
         if (this.isRounded) {
           let r = 0;
 
-          if (
-            mxUtils.getValue(
-              this.style,
-              mxConstants.STYLE_ABSOLUTE_ARCSIZE,
-              0,
-            ) == '1'
-          ) {
+          if (mxUtils.getValue(this.style, mxConstants.STYLE_ABSOLUTE_ARCSIZE, 0) == '1') {
             r = Math.min(
               w / 2,
-              Math.min(
-                h / 2,
-                mxUtils.getValue(
-                  this.style,
-                  mxConstants.STYLE_ARCSIZE,
-                  mxConstants.LINE_ARCSIZE,
-                ) / 2,
-              ),
+              Math.min(h / 2, mxUtils.getValue(this.style, mxConstants.STYLE_ARCSIZE, mxConstants.LINE_ARCSIZE) / 2),
             );
           } else {
             const f =
-              mxUtils.getValue(
-                this.style,
-                mxConstants.STYLE_ARCSIZE,
-                mxConstants.RECTANGLE_ROUNDING_FACTOR * 100,
-              ) / 100;
+              mxUtils.getValue(this.style, mxConstants.STYLE_ARCSIZE, mxConstants.RECTANGLE_ROUNDING_FACTOR * 100) /
+              100;
             r = Math.min(w * f, h * f);
           }
 
@@ -215,8 +192,7 @@ function overrideMxRectangleShapePaintForeground(activate: boolean): void {
   if (!activate) return;
 
   // from draw.io: Disables glass effect with hand jiggle.
-  const mxRectangleShapePaintForeground0 =
-    mxRectangleShape.prototype.paintForeground;
+  const mxRectangleShapePaintForeground0 = mxRectangleShape.prototype.paintForeground;
   mxRectangleShape.prototype.paintForeground = function (c, x, y, w, h): void {
     if (!(c instanceof SketchySvgCanvas)) {
       mxRectangleShapePaintForeground0.apply(this, [c, x, y, w, h]);
