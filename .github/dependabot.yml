@@ -8,7 +8,5 @@ updates:
     commit-message:
       prefix: "[INFRA]"
       prefix-development: "[INFRA] dev -"
-    reviewers:
-      - "aibcmars"
-      - "csouchet"
-      - "tbouffard"
+    # Disable version updates for npm dependencies
+    open-pull-requests-limit: 0
