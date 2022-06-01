@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+permissions:
+  # To create or update releases
+  # https://docs.github.com/en/rest/reference/permissions-required-for-github-apps#permission-on-contents
+  contents: write
+
 jobs:
   update_release_draft:
     runs-on: ubuntu-latest
